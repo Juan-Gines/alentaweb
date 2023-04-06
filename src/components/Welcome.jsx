@@ -16,7 +16,7 @@ const Welcome = () => {
 				</div>
       </div>				
 			<p className='px-5 text-lg font-semibold'>
-				Si tienes una idea nosotros la hacemos realidad. Y si no la tienes pero quieres habrirte al
+				Si tienes una idea nosotros la hacemos realidad. Y si no la tienes pero quieres abrirte al
 				mundo te asesoramos.
 			</p>
 		</div>

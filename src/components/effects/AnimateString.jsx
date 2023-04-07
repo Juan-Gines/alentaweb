@@ -6,7 +6,8 @@ const AnimateString = props => {
   const arrStr = props.str.split('');  
 
   useEffect(()=>{
-    if (string.length < arrStr.length){      
+    if (string.length === 0) setTimeout(() => setString(() => string + arrStr[string.length]), 1500);
+    if (string.length !== 0 && string.length < arrStr.length){      
         setTimeout(()=>setString(()=>string+arrStr[string.length]),50);
       }      
     },[string]

@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from '../components/Header';
+import Header from '../components/sections/header/Header';
 
-const Porfolio = () => {
+const PorfolioPage = () => {
   return (
 		<>
 			<Header />
@@ -10,4 +10,4 @@ const Porfolio = () => {
 	);
 }
 
-export default Porfolio;
+export default PorfolioPage;

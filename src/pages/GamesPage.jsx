@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from '../components/Header';
+import Header from '../components/sections/header/Header';
 
-const Games = () => {
+const GamesPage = () => {
   return (
 		<>
 			<Header />
@@ -10,4 +10,4 @@ const Games = () => {
 	);
 }
 
-export default Games;
+export default GamesPage;

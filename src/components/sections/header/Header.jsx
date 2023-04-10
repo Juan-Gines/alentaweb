@@ -3,7 +3,7 @@ import { FaUser } from 'react-icons/fa';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { UiContext, UiDispatchContext } from '../context/uiContext';
+import { UiContext, UiDispatchContext } from '../../../context/uiContext';
 
 const pages = [
 	{
@@ -38,9 +38,9 @@ const Header = () => {
 	const dispatch = useContext(UiDispatchContext);	
 	
   return (
-		<header>
+		<header className='absolute w-full top-0 max-h-screen'>
 			<div className='absolute z-40 top-0 w-full flex items-center justify-between md:justify-evenly  p-5 bg-gradient-to-tr from-sky-400 to-sky-800 text-slate-200'>
-				<div className='flex gap-2 text-sm sm:text-xl  sm:font-medium items-center'>
+				<div className='flex gap-2 items-center cursor-pointer'>
 					<GiHamburgerMenu
 						className='text-xl md:hidden'
 						onClick={() => {
@@ -50,15 +50,16 @@ const Header = () => {
 						}}
 					/>
 					<Link to='/home'>
-						<div className='flex gap-2 text-sm sm:text-md font-medium items-center'
-						onClick={()=>{
-							dispatch({
-								type: 'changedpage',
-								page: 'home',
-							});
-						}}
+						<div
+							className='flex gap-2 text-sm sm:text-base font-medium items-center'
+							onClick={() => {
+								dispatch({
+									type: 'changedpage',
+									page: 'home',
+								});
+							}}
 						>
-							<FcCommandLine className='text-md sm:text-xl md:text-2xl' />
+							<FcCommandLine className='text-xl md:text-2xl' />
 							<h1>ALENTA SOLUTIONS</h1>
 						</div>
 					</Link>
@@ -95,7 +96,7 @@ const Header = () => {
 			<nav
 				className={`absolute ${navslice === null ? 'hidden' : ''} ${
 					navslice ? 'animate-growDown' : 'animate-growUp'
-				} z-20 top-16 origin-top-center bg-gradient-to-br from-sky-400 to-sky-800 opacity-80 text-slate-200`}
+				} md:animate-growUp z-20 top-16 origin-top-center bg-gradient-to-br from-sky-400 to-sky-800 opacity-80 text-slate-200`}
 			>
 				<ul className='mt-10 mb-5'>
 					{pages.map((p, i) => (
@@ -105,15 +106,15 @@ const Header = () => {
 						>
 							<li
 								className={`${
-									p.title === page ? 'border-r-8 border-yellow-400 opacity-100' : ''
+									p.title === page ? 'border-l-8 border-yellow-400 opacity-100' : ''
 								} mb-3 cursor-pointer hover:bg-blue-800 py-1 px-3`}
 								onClick={() => {
-									p.title !== page ?
-									dispatch({
-										type: 'changedpage',
-										page: p.title,
-									}):
-									null
+									p.title !== page
+										? dispatch({
+												type: 'changedpage',
+												page: p.title,
+										  })
+										: null;
 								}}
 							>
 								{p.title}

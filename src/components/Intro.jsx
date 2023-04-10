@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import IndexBackground from "./canvas/Draws/IndexBackground";
 import AnimateString from "./effects/AnimateString";
 
-const Prueba = () => {  
+const Intro = () => {  
   
   const msg = 'Bienvenido a nuestro rincón del ciberespacio. Aquí encontrarás foros, utilidades sorprendentes, juegos, porfolios e información sobre nosotros.'
   const msg2 = 'Queremos ser los creadores de tu nuevo espacio. Entra, diviertete y sientete libre.'
@@ -32,4 +32,4 @@ const Prueba = () => {
 	);
 }
 
-export default Prueba;
+export default Intro;

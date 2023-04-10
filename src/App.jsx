@@ -1,12 +1,12 @@
-import Inicio from './pages/Inicio'
+import InicioPage from './pages/InicioPage'
 import { Routes, Route } from "react-router-dom"
-import Home from './pages/Home'
-import About from './pages/About'
-import Blog from './pages/Blog'
-import Contact from './pages/Contact'
-import Utils from './pages/Utils'
-import Games from './pages/Games'
-import Porfolio from './pages/Porfolio'
+import HomePage from './pages/HomePage'
+import AboutPage from './pages/AboutPage'
+import BlogPage from './pages/BlogPage'
+import ContactPage from './pages/ContactPage'
+import UtilsPage from './pages/UtilsPage'
+import GamesPage from './pages/GamesPage'
+import PorfolioPage from './pages/PorfolioPage'
 import { UiProvider } from './context/uiContext'
 function App() {  
 
@@ -14,14 +14,14 @@ function App() {
 		<div className='App'>
 			<UiProvider>
 				<Routes>
-					<Route path='/' element={<Inicio />} />
-					<Route path='/home' element={<Home />} />
-					<Route path='/sobre-nosotros' element={<About />} />
-					<Route path='/blog' element={<Blog />} />
-					<Route path='/contacto' element={<Contact />}	/>
-					<Route path='/juegos' element={<Games />}	/>
-					<Route path='/porfolio'	element={<Porfolio />} />
-					<Route path='/utilidades'	element={<Utils />}	/>
+					<Route path='/' element={<InicioPage />} />
+					<Route path='/home' element={<HomePage />} />
+					<Route path='/sobre-nosotros' element={<AboutPage />} />
+					<Route path='/blog' element={<BlogPage />} />
+					<Route path='/contacto' element={<ContactPage />}	/>
+					<Route path='/juegos' element={<GamesPage />}	/>
+					<Route path='/porfolio'	element={<PorfolioPage />} />
+					<Route path='/utilidades'	element={<UtilsPage />}	/>
 				</Routes>
 			</UiProvider>
 		</div>

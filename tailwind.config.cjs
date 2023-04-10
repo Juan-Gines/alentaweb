@@ -11,6 +11,9 @@ module.exports = {
 				growDown: 'growDown 300ms ease-in-out forwards',
 				growUp: 'growUp 300ms ease-in-out forwards',
 			},
+			backgroundImage: {
+        'header': "url('src/assets/img/bgheader.png')",        
+      },
 			keyframes: {
 				aparecer: {
 					'0%': { opacity: '0'},

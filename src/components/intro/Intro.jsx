@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
-import IndexBackground from "./canvas/Draws/IndexBackground";
-import AnimateString from "./effects/AnimateString";
+import IndexBackground from "../canvas/Draws/IndexBackground";
+import AnimateString from "../effects/AnimateString";
+import codigo from '../../assets/img/codigo.png';
+
 
 const Intro = () => {  
   
@@ -11,7 +13,13 @@ const Intro = () => {
 		<div className='relative flex bg-gradient-to-tr w-full h-screen from-gray-800 to-black justify-center'>
 			<IndexBackground />
 			<div className='absolute top-0 h-1/5 w-full flex justify-center items-center'>
-				<h1 className='text-4xl sm:text-6xl text-center font-bold font-sans font-family: text-blue-600 animate-aparecer'>
+				<div className='w-8 mr-4 sm:w-14 sm:m-8'>
+					<img
+						src={codigo}
+						alt='logo codigo'
+					/>
+				</div>
+				<h1 className='font-dancing text-4xl sm:text-7xl text-center font-bold text-blue-600 animate-aparecer'>
 					Alenta Solutions
 				</h1>
 			</div>

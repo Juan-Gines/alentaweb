@@ -1,11 +1,14 @@
 import React from 'react';
+import Footer from '../components/sections/footer/Footer';
 import Header from '../components/sections/header/Header';
+import Utils from '../components/utils/Utils';
 
 const UtilsPage = () => {
   return (
 		<>
 			<Header />
-			<h1 className='text-7xl m-20'>Esta es la sección Utilidades</h1>
+			<Utils />
+			<Footer />
 		</>
 	);
 }

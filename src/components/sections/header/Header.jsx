@@ -4,6 +4,7 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { UiContext, UiDispatchContext } from '../../../context/uiContext';
+import codigo from '../../../assets/img/codigo.png';
 
 const pages = [
 	{
@@ -39,7 +40,7 @@ const Header = () => {
 	
   return (
 		<header className='absolute w-full top-0 max-h-screen'>
-			<div className='absolute z-40 top-0 w-full flex items-center justify-between md:justify-evenly  p-5 bg-gradient-to-tr from-sky-400 to-sky-800 text-slate-200'>
+			<div className='absolute z-40 top-0 w-full flex items-center justify-between p-2 md:justify-evenly py-3 bg-gradient-to-tr from-sky-400 to-sky-800 text-slate-200'>
 				<div className='flex gap-2 items-center cursor-pointer'>
 					<GiHamburgerMenu
 						className='text-xl md:hidden'
@@ -51,7 +52,7 @@ const Header = () => {
 					/>
 					<Link to='/home'>
 						<div
-							className='flex gap-2 text-sm sm:text-base font-medium items-center'
+							className='flex gap-2 items-center'
 							onClick={() => {
 								dispatch({
 									type: 'changedpage',
@@ -59,12 +60,14 @@ const Header = () => {
 								});
 							}}
 						>
-							<FcCommandLine className='text-xl md:text-2xl' />
-							<h1>ALENTA SOLUTIONS</h1>
+							<div className='w-6 sm:w-8'>
+								<img src={codigo} alt='logo codigo' />
+							</div>							
+							<h2 className='font-dancing text-base sm:text-2xl font-bold'>Alenta Solutions</h2>
 						</div>
 					</Link>
 				</div>
-				<nav className='hidden md:flex justify-center gap-4 xl:gap-8 text-sm  '>
+				<nav className='hidden md:flex justify-center gap-4 xl:gap-8 text-sm sm:text-sm lg:text-base '>
 					{pages.map((p, i) => (
 						<Link
 							key={i}

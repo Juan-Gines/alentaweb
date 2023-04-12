@@ -1,11 +1,14 @@
 import React from 'react';
 import Header from '../components/sections/header/Header';
+import Footer from '../components/sections/footer/Footer';
+import Blog from '../components/blog/Blog';
 
 const BlogPage = () => {
   return (
 		<>
 			<Header />
-			<h1 className='text-7xl m-20'>Esta es el BlogPage</h1>
+			<Blog />
+			<Footer />
 		</>
 	);
 }

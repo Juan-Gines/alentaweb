@@ -1,11 +1,14 @@
 import React from 'react';
+import About from '../components/about/About';
+import Footer from '../components/sections/footer/Footer';
 import Header from '../components/sections/header/Header';
 
 const AboutPage = () => {
   return (
     <>
       <Header />
-      <h1 className='text-7xl m-20'>Esta es la pestaña Sobre Nosotros</h1>
+      <About />
+      <Footer />
     </>
   );
 }

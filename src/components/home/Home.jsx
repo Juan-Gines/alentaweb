@@ -6,7 +6,13 @@ import porfolio from '../../assets/img/porfolio.png';
 import codigo from '../../assets/img/codigo.png';
 import MainHeader from '../sections/header/MainHeader';
 
+// TODO: Refactorizar en secciones y seccion
+
 const Home = () => {
+	const sections =[
+		{}
+	]
+
   return (
 		<main className='min-h-screen'>
 			<MainHeader
@@ -37,7 +43,7 @@ const Home = () => {
 							/>
 						</div>
 						<div className='mt-4'>
-							<span>Juegos divertidos para pasar el rato.</span>
+							<span>Juegos divertidos remasterizados de ejercicios de programación. Puedes practicar tu agilidad con el teclado.</span>
 						</div>
 					</article>
 					<article className='cursor-pointer p-4'>

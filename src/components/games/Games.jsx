@@ -1,13 +1,19 @@
-import React from 'react';
+import { useContext } from 'react';
 import MainHeader from '../sections/header/MainHeader';
-import juegos from '../../assets/img/seta2.png';
+import { UiContext } from '../../context/uiContext';
 
-const Games = () => {Games
-  return (
-    <main className='min-h-screen'>
-      <MainHeader icon={juegos} text='Juegos' />
-    </main>
-  );
-}
+const Games = () => {
+  const { sections } = useContext(UiContext);
+  const games = sections.find((sec) => sec.title === 'Juegos');
+
+	return (
+		<main className='min-h-screen'>
+			<MainHeader
+				icon={games.icon}
+				text={games.title}
+			/>
+		</main>
+	);
+};
 
 export default Games;

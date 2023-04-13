@@ -1,13 +1,19 @@
-import React from 'react';
+import { useContext } from 'react';
 import MainHeader from '../sections/header/MainHeader';
-import blog from '../../assets/img/blog.png';
+import { UiContext } from '../../context/uiContext';
 
 const Blog = () => {
-  return (
+	const { sections } = useContext(UiContext);
+	const blog = sections.find((sec) => sec.title === 'Blog');
+
+	return (
 		<main className='min-h-screen'>
-      <MainHeader icon={blog} text='Blog' />
-    </main>
-  );
-}
+			<MainHeader
+				icon={blog.icon}
+				text={blog.title}
+			/>
+		</main>
+	);
+};
 
 export default Blog;

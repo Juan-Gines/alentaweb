@@ -1,13 +1,19 @@
-import React from 'react';
+import { useContext } from 'react';
 import MainHeader from '../sections/header/MainHeader';
-import utilidades from '../../assets/img/utilidades.png';
+import { UiContext } from '../../context/uiContext';
 
 const Utils = () => {
-  return (
+	const { sections } = useContext(UiContext);
+	const utils = sections.find((sec) => sec.title === 'Utilidades');
+
+	return (
 		<main className='min-h-screen'>
-      <MainHeader icon={utilidades} text='Utilidades' />
-    </main>
-  );
-}
+			<MainHeader
+				icon={utils.icon}
+				text={utils.title}
+			/>
+		</main>
+	);
+};
 
 export default Utils;

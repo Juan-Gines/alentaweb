@@ -1,13 +1,20 @@
-import React from 'react';
+import { useContext } from 'react';
 import MainHeader from '../sections/header/MainHeader';
-import about from '../../assets/img/about.png';
+import { UiContext } from '../../context/uiContext';
 
 const About = () => {
+
+  const { sections } = useContext(UiContext);
+  const about = sections.find((sec)=>sec.title === 'Sobre Nosotros');
+  
   return (
 		<main className='min-h-screen'>
-      <MainHeader icon={about} text='Sobre Nosotros' />
-    </main>
-  );
+			<MainHeader
+				icon={about.icon}
+				text={about.title}
+			/>
+		</main>
+	);
 }
 
 export default About;

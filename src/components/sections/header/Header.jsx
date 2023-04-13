@@ -1,4 +1,3 @@
-import { FcCommandLine } from 'react-icons/fc'
 import { FaUser } from 'react-icons/fa';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { useContext } from 'react';
@@ -6,36 +5,10 @@ import { Link } from 'react-router-dom';
 import { UiContext, UiDispatchContext } from '../../../context/uiContext';
 import codigo from '../../../assets/img/codigo.png';
 
-const pages = [
-	{
-		title: 'Blog',
-		url: '/blog'
-	},
-	{
-		title: 'Juegos',
-		url: '/juegos'
-	},
-  {
-		title: 'Utilidades',
-		url: '/utilidades'
-	},
-  {
-		title: 'Porfolio',
-		url: '/porfolio'
-	},
-  {
-		title: 'Contacto',
-		url: '/contacto'
-	},
-	{
-		title: 'Sobre nosotros',
-		url: '/sobre-nosotros'
-	},
-]
-
 const Header = () => {
 
-	const { page, navslice} = useContext(UiContext);
+	const { page, navslice, sections} = useContext(UiContext);
+	const navSections = sections.filter((sec)=> sec.title !== 'home')	
 	const dispatch = useContext(UiDispatchContext);	
 	
   return (
@@ -50,7 +23,7 @@ const Header = () => {
 							});
 						}}
 					/>
-					<Link to='/home'>
+					<Link to={sections[0].url}>
 						<div
 							className='flex gap-2 items-center'
 							onClick={() => {
@@ -63,26 +36,26 @@ const Header = () => {
 							<div className='w-6 sm:w-8'>
 								<img src={codigo} alt='logo codigo' />
 							</div>							
-							<h2 className='font-dancing text-base sm:text-2xl font-bold'>Alenta Solutions</h2>
+							<h2 className='font-dancing text-base sm:text-2xl font-bold'>{sections[0].description}</h2>
 						</div>
 					</Link>
 				</div>
 				<nav className='hidden md:flex justify-center gap-4 xl:gap-8 text-sm sm:text-sm lg:text-base '>
-					{pages.map((p, i) => (
+					{navSections.map((pag, i) => (
 						<Link
 							key={i}
-							to={p.url}
+							to={pag.url}
 						>
 							<div
-								className={`${p.title === page ? 'border-b-4 border-yellow-400' : ''}`}
+								className={`${pag.title === page ? 'border-b-4 border-yellow-400' : ''}`}
 								onClick={() => {
 									dispatch({
 										type: 'changedpage',
-										page: p.title,
+										page: pag.title,
 									});
 								}}
 							>
-								{p.title}
+								{pag.title}
 							</div>
 						</Link>
 					))}
@@ -99,28 +72,28 @@ const Header = () => {
 			<nav
 				className={`absolute ${navslice === null ? 'hidden' : ''} ${
 					navslice ? 'animate-growDown' : 'animate-growUp'
-				} md:animate-growUp z-20 top-16 origin-top-center bg-gradient-to-br from-sky-400 to-sky-800 opacity-80 text-slate-200`}
+				} md:animate-growUp z-20 top-10 origin-top-center bg-gradient-to-br from-sky-400 to-sky-800 text-slate-200`}
 			>
 				<ul className='mt-10 mb-5'>
-					{pages.map((p, i) => (
+					{navSections.map((pag, i) => (
 						<Link
 							key={i}
-							to={p.url}
+							to={pag.url}
 						>
 							<li
 								className={`${
-									p.title === page ? 'border-l-8 border-yellow-400 opacity-100' : ''
+									pag.title === page ? 'border-l-8 border-yellow-400 opacity-100' : ''
 								} mb-3 cursor-pointer hover:bg-blue-800 py-1 px-3`}
 								onClick={() => {
-									p.title !== page
+									pag.title !== page
 										? dispatch({
 												type: 'changedpage',
-												page: p.title,
+												page: pag.title,
 										  })
 										: null;
 								}}
 							>
-								{p.title}
+								{pag.title}
 							</li>
 						</Link>
 					))}

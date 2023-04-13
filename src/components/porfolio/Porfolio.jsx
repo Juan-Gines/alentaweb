@@ -1,13 +1,19 @@
-import React from 'react';
+import { useContext } from 'react';
 import MainHeader from '../sections/header/MainHeader';
-import porfolio from '../../assets/img/porfolio.png';
+import { UiContext } from '../../context/uiContext';
 
 const Porfolio = () => {
-  return (
+	const { sections } = useContext(UiContext);
+	const porfolio = sections.find((sec) => sec.title === 'Porfolio');
+
+	return (
 		<main className='min-h-screen'>
-      <MainHeader icon={porfolio} text='Porfolio' />
-    </main>
-  );
-}
+			<MainHeader
+				icon={porfolio.icon}
+				text={porfolio.title}
+			/>
+		</main>
+	);
+};
 
 export default Porfolio;

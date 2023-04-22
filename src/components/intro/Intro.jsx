@@ -7,22 +7,22 @@ import { UiContext } from "../../context/uiContext";
 
 const Intro = () => {  
   
-	const { sections } = useContext(UiContext);
+	const { page } = useContext(UiContext);	
   const msg = 'Bienvenido a nuestro rincón del ciberespacio. Aquí encontrarás foros, utilidades sorprendentes, juegos, porfolios e información sobre nosotros.'
   const msg2 = 'Queremos ser los creadores de tu nuevo espacio. Entra, diviertete y sientete libre.'
 
   return (
 		<div className='relative flex bg-gradient-to-tr w-full h-screen from-gray-800 to-black justify-center'>
 			<IndexBackground />
-			<div className='absolute top-0 h-1/5 w-full flex justify-center items-center'>
+			<div className='absolute top-0 h-1/5 w-full flex justify-center items-center animate-aparecer'>
 				<div className='w-8 mr-4 sm:w-14 sm:m-8'>
 					<img
-						src={sections[0].icon}
+						src={page.icon}
 						alt='logo codigo'
 					/>
 				</div>
-				<h1 className='font-dancing text-4xl sm:text-7xl text-center font-bold text-blue-600 animate-aparecer'>
-					{sections[0].description}
+				<h1 className='font-dancing text-4xl sm:text-7xl text-center font-bold text-blue-600'>
+					{page.title}
 				</h1>
 			</div>
 			<div className='absolute top-1/4 w-3/4  text-xl sm:text-lg font-sans font-family: text-blue-400 shadow-gray-900'>

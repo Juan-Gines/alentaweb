@@ -3,12 +3,13 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { UiContext, UiDispatchContext } from '../../../context/uiContext';
-import codigo from '../../../assets/img/codigo.png';
 
 const Header = () => {
 
 	const { page, navslice, sections} = useContext(UiContext);
-	const navSections = sections.filter((sec)=> sec.title !== 'home')	
+	const navSections = sections.filter((sec)=> sec.name !== 'home');
+	const home = sections[0];
+
 	const dispatch = useContext(UiDispatchContext);	
 	
   return (
@@ -23,20 +24,20 @@ const Header = () => {
 							});
 						}}
 					/>
-					<Link to={sections[0].url}>
+					<Link to={home.url}>
 						<div
 							className='flex gap-2 items-center'
 							onClick={() => {
 								dispatch({
 									type: 'changedpage',
-									page: 'home',
+									page: home,
 								});
 							}}
 						>
 							<div className='w-6 sm:w-8'>
-								<img src={codigo} alt='logo codigo' />
+								<img src={home.icon} alt='logo codigo' />
 							</div>							
-							<h2 className='font-dancing text-base sm:text-2xl font-bold'>{sections[0].description}</h2>
+							<h2 className='font-dancing text-base sm:text-2xl font-bold'>{home.title}</h2>
 						</div>
 					</Link>
 				</div>
@@ -47,11 +48,11 @@ const Header = () => {
 							to={pag.url}
 						>
 							<div
-								className={`${pag.title === page ? 'border-b-4 border-yellow-400' : ''}`}
+								className={`${pag.name === page.name ? 'border-b-4 border-yellow-400' : ''}`}
 								onClick={() => {
 									dispatch({
 										type: 'changedpage',
-										page: pag.title,
+										page: pag,
 									});
 								}}
 							>
@@ -82,14 +83,14 @@ const Header = () => {
 						>
 							<li
 								className={`${
-									pag.title === page ? 'border-l-8 border-yellow-400 opacity-100' : ''
+									pag.name === page.name ? 'border-l-8 border-yellow-400 opacity-100' : ''
 								} mb-3 cursor-pointer hover:bg-blue-800 py-1 px-3`}
 								onClick={() => {
 									pag.title !== page
 										? dispatch({
-												type: 'changedpage',
-												page: pag.title,
-										  })
+											type: 'changedpage',
+											page: pag,
+										})
 										: null;
 								}}
 							>

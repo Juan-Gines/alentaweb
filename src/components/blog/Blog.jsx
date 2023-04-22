@@ -8,10 +8,7 @@ const Blog = () => {
 
 	return (
 		<main className='min-h-screen'>
-			<MainHeader
-				icon={blog.icon}
-				text={blog.title}
-			/>
+			<MainHeader	/>
 		</main>
 	);
 };

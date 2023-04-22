@@ -8,48 +8,56 @@ import utilidades  from "../assets/img/utilidades.png"
 import contacto  from "../assets/img/contacto.png"
 import about  from "../assets/img/about.png"
 
-const initialState = {
-	page: 'home',
-	navslice: null,
-	sections: [
-		new Section('home', '/home', codigo, 'Alenta Solutions'),
+const sectionList = [
+		new Section('home','Alenta Solutions', '/home', codigo, 'Alenta Solutions'),
 		new Section(
+			'blog',
 			'Blog',
 			'/blog',
 			blog,
 			'Blog para amigos y familiares para que nos cuentes cualquier cosa. Registrate y cuelga lo que te apetezca.'
 		),
 		new Section(
+			'games',
 			'Juegos',
 			'/juegos',
 			juegos,
 			'Juegos divertidos remasterizados de ejercicios de programación. Puedes practicar tu agilidad con el teclado.'
 		),
 		new Section(
+			'utils',
 			'Utilidades',
 			'/utilidades',
 			porfolio,
 			'Utilidades sorprendentes para tu día a día. Tales como una lista de la compra, una calculadora, etc...'
 		),
 		new Section(
+			'porfolio',
 			'Porfolio',
 			'/porfolio',
 			utilidades,
-			'Mi porfolio para que conozcas mis trabajos y proyectos en este apasionante mundotecnológico.'
+			'Mi porfolio para que conozcas mis trabajos y proyectos en este apasionante mundo tecnológico.'
 		),
 		new Section(
+			'contact',
 			'Contacto',
 			'/contacto',
 			contacto,
-			'Mi porfolio para que conozcas mis trabajos y proyectos en este apasionante mundotecnológico.'
+			'Mi porfolio para que conozcas mis trabajos y proyectos en este apasionante mundo tecnológico.'
 		),
 		new Section(
+			'about',
 			'Sobre Nosotros',
 			'/sobre-nosotros',
 			about,
-			'Mi porfolio para que conozcas mis trabajos y proyectos en este apasionante mundotecnológico.'
+			'Mi porfolio para que conozcas mis trabajos y proyectos en este apasionante mundo tecnológico.'
 		),
-	],
+	];
+
+const initialState = {
+	page: sectionList.find((sec) => sec.name === 'home'),
+	navslice: null,
+	sections: sectionList,
 };
 
 export const UiContext = createContext(null);

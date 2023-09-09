@@ -1,16 +1,15 @@
-import React from 'react';
-import Header from '../components/sections/header/Header';
-import Porfolio from '../components/porfolio/Porfolio';
-import Footer from '../components/sections/footer/Footer';
+import Header from '../components/sections/header/Header'
+import Porfolio from '../components/porfolio/Porfolio'
+import Footer from '../components/sections/footer/Footer'
 
 const PorfolioPage = () => {
   return (
-		<>
-			<Header />
-			<Porfolio />
-			<Footer />
-		</>
-	);
+    <>
+      <Header />
+      <Porfolio />
+      <Footer />
+    </>
+  )
 }
 
-export default PorfolioPage;
+export default PorfolioPage

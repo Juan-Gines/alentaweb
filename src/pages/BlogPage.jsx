@@ -1,16 +1,15 @@
-import React from 'react';
-import Header from '../components/sections/header/Header';
-import Footer from '../components/sections/footer/Footer';
-import Blog from '../components/blog/Blog';
+import Header from '../components/sections/header/Header'
+import Footer from '../components/sections/footer/Footer'
+import Blog from '../components/blog/Blog'
 
 const BlogPage = () => {
   return (
-		<>
-			<Header />
-			<Blog />
-			<Footer />
-		</>
-	);
+    <>
+      <Header />
+      <Blog />
+      <Footer />
+    </>
+  )
 }
 
-export default BlogPage;
+export default BlogPage

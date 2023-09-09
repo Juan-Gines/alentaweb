@@ -1,19 +1,23 @@
-import { useContext } from 'react';
-import MainHeader from '../sections/header/MainHeader';
-import { UiContext } from '../../context/uiContext';
+import { useContext } from 'react'
+import MainHeader from '../sections/header/MainHeader'
+import { UiContext, UiDispatchContext } from '../../context/uiContext'
 
 const Utils = () => {
-	const { sections } = useContext(UiContext);
-	const utils = sections.find((sec) => sec.title === 'Utilidades');
+  const { page, sections } = useContext(UiContext)
+  const utils = sections.find((sec) => sec.title === 'Utilidades')
+  const dispatch = useContext(UiDispatchContext)
+  if (page !== utils) {
+    dispatch({
+      type: 'changedpage',
+      page: utils
+    })
+  }
 
-	return (
-		<main className='min-h-screen'>
-			<MainHeader
-				icon={utils.icon}
-				text={utils.title}
-			/>
-		</main>
-	);
-};
+  return (
+    <main className='min-h-screen'>
+      <MainHeader />
+    </main>
+  )
+}
 
-export default Utils;
+export default Utils

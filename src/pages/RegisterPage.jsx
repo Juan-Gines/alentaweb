@@ -1,15 +1,15 @@
+import About from '../components/about/About'
 import Footer from '../components/sections/footer/Footer'
 import Header from '../components/sections/header/Header'
-import Utils from '../components/utils/Utils'
 
-const UtilsPage = () => {
+const RegisterPage = () => {
   return (
     <>
       <Header />
-      <Utils />
+      <About />
       <Footer />
     </>
   )
 }
 
-export default UtilsPage
+export default RegisterPage

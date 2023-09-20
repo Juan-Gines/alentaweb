@@ -1,18 +1,20 @@
 import MainHeader from '../sections/header/MainHeader'
 import console from '../../assets/img/Consola.png'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { UiContext, UiDispatchContext } from '../../context/uiContext'
 
 const Blog = () => {
   const { page, sections } = useContext(UiContext)
   const blog = sections.find((sec) => sec.title === 'Blog')
   const dispatch = useContext(UiDispatchContext)
-  if (page !== blog) {
-    dispatch({
-      type: 'changedpage',
-      page: blog
-    })
-  }
+  useEffect(() => {
+    if (page !== blog) {
+      dispatch({
+        type: 'changedpage',
+        page: blog
+      })
+    }
+  }, [])
   return (
     <main className='min-h-screen'>
       <MainHeader />

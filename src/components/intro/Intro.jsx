@@ -1,11 +1,21 @@
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import IndexBackground from '../canvas/Draws/IndexBackground'
 import AnimateString from '../effects/AnimateString'
-import { UiContext } from '../../context/uiContext'
+import { UiContext, UiDispatchContext } from '../../context/uiContext'
 
 const Intro = () => {
-  const { page } = useContext(UiContext)
+  const { page, sections } = useContext(UiContext)
+  const home = sections.find((sec) => sec.title === 'Alenta Dev')
+  const dispatch = useContext(UiDispatchContext)
+  useEffect(() => {
+    if (page !== home) {
+      dispatch({
+        type: 'changedpage',
+        page: home
+      })
+    }
+  }, [])
   const msg = 'Bienvenido a nuestro rincón del ciberespacio. Aquí encontrarás foros, utilidades sorprendentes, juegos, porfolios e información sobre nosotros.'
   const msg2 = 'Queremos ser los creadores de tu nuevo espacio. Entra, diviertete y sientete libre.'
 

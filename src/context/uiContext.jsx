@@ -9,13 +9,13 @@ import contacto from '../assets/img/contacto.png'
 import about from '../assets/img/about.png'
 
 const sectionList = [
-  new Section('home', 'Alenta Solutions', '/home', codigo, 'Alenta Solutions'),
+  new Section('home', 'Alenta Dev', '/home', codigo, 'Alenta Dev'),
   new Section(
     'login',
     'Login',
     '/login',
-    about,
-    'Login'
+    codigo,
+    'Acreditate'
   ),
   new Section(
     'register',

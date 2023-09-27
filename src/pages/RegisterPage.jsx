@@ -1,13 +1,9 @@
-import About from '../components/about/About'
-import Footer from '../components/sections/footer/Footer'
-import Header from '../components/sections/header/Header'
+import Register from '../components/auth/Register'
 
 const RegisterPage = () => {
   return (
     <>
-      <Header />
-      <About />
-      <Footer />
+      <Register />
     </>
   )
 }

@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom'
 import { UiContext, UiDispatchContext } from '../../../context/uiContext'
 import burger from '../../../assets/img/menu.png'
 import userIcon from '../../../assets/img/user.png'
+import { useAuth } from '../../../context/authContext'
 
 const Header = () => {
   const { page, navslice, sections } = useContext(UiContext)
   const [home, login,, ...navSections] = sections
   const dispatch = useContext(UiDispatchContext)
+  const { auth, logout } = useAuth()
   return (
     <header className='absolute w-full top-0 max-h-screen'>
       <div className='absolute z-40 top-0 w-full flex items-center justify-between p-2 md:justify-evenly py-3 bg-gradient-to-tr from-sky-400 to-sky-800 text-slate-200'>
@@ -72,19 +74,26 @@ const Header = () => {
               alt='Icono de usuario'
             />
           </div>
-          <Link to={login.url}>
-            <button
-              className='bg-blue-700 py-1 px-3 sm:px-5 rounded-lg  text-sm hover:bg-blue-900 active:bg-blue-600'
-              onClick={() => {
-                dispatch({
-                  type: 'changedpage',
-                  page: login
-                })
-              }}
-            >
-              Login
-            </button>
-          </Link>
+          {!auth.user
+            ? (<Link to={login.url}>
+              <button
+                className='bg-blue-700 py-1 px-3 sm:px-5 rounded-lg  text-sm hover:bg-blue-900 active:bg-blue-600'
+                onClick={() => {
+                  dispatch({
+                    type: 'changedpage',
+                    page: login
+                  })
+                }}
+              >
+                Login
+              </button>
+            </Link>)
+            : (<button
+                className='bg-red-700 py-1 px-3 sm:px-5 rounded-lg  text-sm hover:bg-red-900 active:bg-blue-600'
+                onClick={logout}
+               >
+              Logout
+               </button>)}
         </div>
       </div>
       <nav
@@ -108,6 +117,7 @@ const Header = () => {
         </ul>
       </nav>
     </header>
+
   )
 }
 

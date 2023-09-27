@@ -21,7 +21,7 @@ const sectionList = [
     'register',
     'Registro',
     '/registro',
-    about,
+    codigo,
     'Registro'
   ),
   new Section(

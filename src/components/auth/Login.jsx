@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { api } from '../../constants/api'
 import axios from 'axios'
 import { useAuth } from '../../context/authContext'
+import ErrorForms from '../forms/errorForms'
 
 const Login = () => {
   const { page, sections } = useContext(UiContext)
@@ -11,6 +12,7 @@ const Login = () => {
   const register = sections.find((sec) => sec.title === 'Registro')
   const dispatch = useContext(UiDispatchContext)
   const { login } = useAuth()
+  const [errorLogin, setErrorLogin] = useState(false)
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -37,9 +39,11 @@ const Login = () => {
     } catch (error) {
       if (error.response && error.response.data.status === 'FAILED') {
         const { data } = error.response.data
-        console.log(data)
+        // console.log(data.error)
+        setErrorLogin(data.error)
       } else {
         console.error('Error en la solicitud:', error)
+        setErrorLogin('error')
       }
     }
   }
@@ -96,6 +100,8 @@ const Login = () => {
                 onChange={handleInputChange}
               />
             </div>
+
+            {errorLogin && <ErrorForms error={errorLogin} />}
 
             <div className='flex items-center justify-between mt-4'>
               <div href='#' className='text-sm text-gray-600 dark:text-gray-200 hover:text-slate-500'>

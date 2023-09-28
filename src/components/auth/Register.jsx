@@ -3,12 +3,14 @@ import { UiContext, UiDispatchContext } from '../../context/uiContext'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { api } from '../../constants/api'
+import ErrorForms from '../forms/errorForms'
 
 const Register = () => {
   const { page, sections } = useContext(UiContext)
   const register = sections.find((sec) => sec.title === 'Registro')
   const login = sections.find((sec) => sec.title === 'Login')
   const dispatch = useContext(UiDispatchContext)
+  const [errorLogin, setErrorLogin] = useState(false)
   const navigate = useNavigate()
   const [formData, setFormData] = useState({
     name: '',
@@ -40,7 +42,10 @@ const Register = () => {
     } catch (error) {
       if (error.response.data.status === 'FAILED') {
         const { data } = error.response.data
-        console.log(data)
+        setErrorLogin(data.error)
+      } else {
+        console.error('Error en la solicitud:', error)
+        setErrorLogin('<p>* Ha habido un error de conexión</p>')
       }
     }
   }
@@ -135,6 +140,8 @@ const Register = () => {
                 onChange={handleInputChange}
               />
             </div>
+
+            {errorLogin && <ErrorForms error={errorLogin} />}
 
             <div className='mt-6'>
               <button

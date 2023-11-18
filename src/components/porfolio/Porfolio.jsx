@@ -1,17 +1,14 @@
 import { useContext, useEffect } from 'react'
 import MainHeader from '../sections/header/MainHeader'
-import { UiContext, UiDispatchContext } from '../../context/uiContext'
+import { UiContext } from '../../context/uiContext'
 
 const Porfolio = () => {
-  const { page, sections } = useContext(UiContext)
-  const porfolio = sections.find((sec) => sec.title === 'Porfolio')
-  const dispatch = useContext(UiDispatchContext)
+  const { ui: { page, sections }, changePage } = useContext(UiContext)
+  const porfolioPage = sections.nav.porfolio
+  console.log(page !== porfolioPage)
   useEffect(() => {
-    if (page !== porfolio) {
-      dispatch({
-        type: 'changedpage',
-        page: porfolio
-      })
+    if (page !== porfolioPage) {
+      changePage(porfolioPage)
     }
   }, [])
 

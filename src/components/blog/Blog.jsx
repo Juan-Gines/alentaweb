@@ -1,18 +1,14 @@
 import MainHeader from '../sections/header/MainHeader'
 import console from '../../assets/img/Consola.png'
 import { useContext, useEffect } from 'react'
-import { UiContext, UiDispatchContext } from '../../context/uiContext'
+import { UiContext } from '../../context/uiContext'
 
 const Blog = () => {
-  const { page, sections } = useContext(UiContext)
-  const blog = sections.find((sec) => sec.title === 'Blog')
-  const dispatch = useContext(UiDispatchContext)
+  const { ui: { page, sections }, changePage } = useContext(UiContext)
+  const blogPage = sections.nav.blog
   useEffect(() => {
-    if (page !== blog) {
-      dispatch({
-        type: 'changedpage',
-        page: blog
-      })
+    if (page !== blogPage) {
+      changePage(blogPage)
     }
   }, [])
   return (

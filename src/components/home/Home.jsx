@@ -1,18 +1,14 @@
 import { useContext, useEffect } from 'react'
-import { UiContext, UiDispatchContext } from '../../context/uiContext'
+import { UiContext } from '../../context/uiContext'
 import MainHeader from '../sections/header/MainHeader'
 import SectionList from './sections/SectionList'
 
 const Home = () => {
-  const { page, sections } = useContext(UiContext)
-  const home = sections.find((sec) => sec.title === 'Alenta Dev')
-  const dispatch = useContext(UiDispatchContext)
+  const { ui: { page, sections }, changePage } = useContext(UiContext)
+  const home = sections.nav.home
   useEffect(() => {
     if (page !== home) {
-      dispatch({
-        type: 'changedpage',
-        page: home
-      })
+      changePage(home)
     }
   }, [])
   return (

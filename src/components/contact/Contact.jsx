@@ -1,17 +1,14 @@
 import { useContext, useEffect } from 'react'
 import MainHeader from '../sections/header/MainHeader'
-import { UiContext, UiDispatchContext } from '../../context/uiContext'
+import { UiContext } from '../../context/uiContext'
 
 const Contact = () => {
-  const { page, sections } = useContext(UiContext)
-  const contact = sections.find((sec) => sec.title === 'Contacto')
-  const dispatch = useContext(UiDispatchContext)
+  const { ui: { page, sections }, changePage } = useContext(UiContext)
+  const contactPage = sections.nav.contact
+  console.log(page !== contactPage)
   useEffect(() => {
-    if (page !== contact) {
-      dispatch({
-        type: 'changedpage',
-        page: contact
-      })
+    if (page !== contactPage) {
+      changePage(contactPage)
     }
   }, [])
 

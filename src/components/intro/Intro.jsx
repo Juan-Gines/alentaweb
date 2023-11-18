@@ -2,18 +2,14 @@ import { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import IndexBackground from '../canvas/Draws/IndexBackground'
 import AnimateString from '../effects/AnimateString'
-import { UiContext, UiDispatchContext } from '../../context/uiContext'
+import { UiContext } from '../../context/uiContext'
 
 const Intro = () => {
-  const { page, sections } = useContext(UiContext)
-  const home = sections.find((sec) => sec.title === 'Alenta Dev')
-  const dispatch = useContext(UiDispatchContext)
+  const { ui: { page, sections }, changePage } = useContext(UiContext)
+  const home = sections.nav.home
   useEffect(() => {
     if (page !== home) {
-      dispatch({
-        type: 'changedpage',
-        page: home
-      })
+      changePage(home)
     }
   }, [])
   const msg = 'Bienvenido a nuestro rincón del ciberespacio. Aquí encontrarás foros, utilidades sorprendentes, juegos, porfolios e información sobre nosotros.'

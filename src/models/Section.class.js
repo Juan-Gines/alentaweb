@@ -1,12 +1,10 @@
 export class Section {
-  name
   title
   url
   icon
   description
 
-  constructor (name, title, url, icon, description) {
-    this.name = name
+  constructor (title, url, icon, description) {
     this.title = title
     this.url = url
     this.icon = icon

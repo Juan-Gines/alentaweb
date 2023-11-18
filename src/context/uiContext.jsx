@@ -1,76 +1,8 @@
 import { createContext, useReducer } from 'react'
-import { Section } from '../models/Section.class'
-import codigo from '../assets/img/codigo.png'
-import blog from '../assets/img/blog.png'
-import juegos from '../assets/img/seta2.png'
-import porfolio from '../assets/img/porfolio.png'
-import utilidades from '../assets/img/utilidades.png'
-import contacto from '../assets/img/contacto.png'
-import about from '../assets/img/about.png'
-
-const sectionList = [
-  new Section('home', 'Alenta Dev', '/home', codigo, 'Alenta Dev'),
-  new Section(
-    'login',
-    'Login',
-    '/login',
-    codigo,
-    'Acreditate'
-  ),
-  new Section(
-    'register',
-    'Registro',
-    '/registro',
-    codigo,
-    'Registro'
-  ),
-  new Section(
-    'blog',
-    'Blog',
-    '/blog',
-    blog,
-    'Blog para amigos y familiares para que nos cuentes cualquier cosa. Registrate y cuelga lo que te apetezca.'
-  ),
-  new Section(
-    'games',
-    'Juegos',
-    '/juegos',
-    juegos,
-    'Juegos divertidos remasterizados de ejercicios de programación. Puedes practicar tu agilidad con el teclado.'
-  ),
-  new Section(
-    'utils',
-    'Utilidades',
-    '/utilidades',
-    porfolio,
-    'Utilidades sorprendentes para tu día a día. Tales como una lista de la compra, una calculadora, etc...'
-  ),
-  new Section(
-    'porfolio',
-    'Porfolio',
-    '/porfolio',
-    utilidades,
-    'Mi porfolio para que conozcas mis trabajos y proyectos en este apasionante mundo tecnológico.'
-  ),
-  new Section(
-    'contact',
-    'Contacto',
-    '/contacto',
-    contacto,
-    'Mi porfolio para que conozcas mis trabajos y proyectos en este apasionante mundo tecnológico.'
-  ),
-  new Section(
-    'about',
-    'Sobre Nosotros',
-    '/sobre-nosotros',
-    about,
-    'Mi porfolio para que conozcas mis trabajos y proyectos en este apasionante mundo tecnológico.'
-  )
-
-]
+import { sectionList } from '../constants/sections'
 
 const initialState = {
-  page: sectionList.find((sec) => sec.name === 'home'),
+  page: sectionList.nav.home,
   navslice: null,
   sections: sectionList
 }
@@ -81,8 +13,28 @@ export const UiDispatchContext = createContext(null)
 export const UiProvider = ({ children }) => {
   const [ui, dispatch] = useReducer(uiReducer, initialState)
 
+  function changePage (page) {
+    dispatch({
+      type: 'changedpage',
+      payload: {
+        page
+      }
+    })
+  }
+  function toggleNavSlice () {
+    dispatch({
+      type: 'togglenavslice'
+    })
+  }
+
+  const value = {
+    ui,
+    changePage,
+    toggleNavSlice
+  }
+
   return (
-    <UiContext.Provider value={ui}>
+    <UiContext.Provider value={value}>
       <UiDispatchContext.Provider value={dispatch}>
         {children}
       </UiDispatchContext.Provider>
@@ -91,10 +43,12 @@ export const UiProvider = ({ children }) => {
 }
 
 const uiReducer = (ui, action) => {
-  switch (action.type) {
+  const { type, payload } = action
+
+  switch (type) {
     case 'changedpage': {
       return {
-        page: action.page,
+        page: payload.page,
         navslice: null,
         sections: ui.sections
       }
@@ -107,7 +61,7 @@ const uiReducer = (ui, action) => {
       }
     }
     default: {
-      throw Error('Unknown action: ' + action.type)
+      throw Error('Unknown action: ' + type)
     }
   }
 }

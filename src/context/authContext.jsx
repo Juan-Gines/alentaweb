@@ -9,7 +9,7 @@ export const useAuth = () => {
   return useContext(AuthContext)
 }
 
-const createAuth = (newToken) => {
+export const createAuth = (newToken) => {
   return {
     headers: {
       'Content-Type': 'application/json',

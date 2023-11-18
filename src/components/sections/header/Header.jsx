@@ -1,14 +1,16 @@
 import { useContext } from 'react'
 import { Link } from 'react-router-dom'
-import { UiContext, UiDispatchContext } from '../../../context/uiContext'
+import { UiContext } from '../../../context/uiContext'
 import burger from '../../../assets/img/menu.png'
 import userIcon from '../../../assets/img/user.png'
 import { useAuth } from '../../../context/authContext'
 
 const Header = () => {
-  const { page, navslice, sections } = useContext(UiContext)
-  const [home, login,, ...navSections] = sections
-  const dispatch = useContext(UiDispatchContext)
+  const { ui: { page, sections, navslice }, changePage, toggleNavSlice } = useContext(UiContext)
+  const { nav, auth: { login } } = sections
+  const [, ...rest] = Object.keys(nav)
+  const navSections = rest.map(s => nav[s])
+  const { home } = nav
   const { auth, logout } = useAuth()
   return (
     <header className='absolute w-full top-0 max-h-screen'>
@@ -16,11 +18,7 @@ const Header = () => {
         <div className='flex gap-2 items-center cursor-pointer'>
           <div
             className='w-6 sm:w-8 md:hidden'
-            onClick={() => {
-              dispatch({
-                type: 'togglenavslice'
-              })
-            }}
+            onClick={toggleNavSlice}
           >
             <img
               src={burger}
@@ -30,12 +28,7 @@ const Header = () => {
           <Link to={home.url}>
             <div
               className='flex gap-2 items-center'
-              onClick={() => {
-                dispatch({
-                  type: 'changedpage',
-                  page: home
-                })
-              }}
+              onClick={() => home === page && changePage(home)}
             >
               <div className='w-6 sm:w-8'>
                 <img
@@ -54,13 +47,8 @@ const Header = () => {
               to={pag.url}
             >
               <div
-                className={`${pag.name === page.name ? 'border-b-4 border-yellow-400' : ''}`}
-                onClick={() => {
-                  dispatch({
-                    type: 'changedpage',
-                    page: pag
-                  })
-                }}
+                className={`${pag === page ? 'border-b-4 border-yellow-400' : ''}`}
+                onClick={() => changePage(pag)}
               >
                 {pag.title}
               </div>
@@ -78,22 +66,17 @@ const Header = () => {
             ? (<Link to={login.url}>
               <button
                 className='bg-blue-700 py-1 px-3 sm:px-5 rounded-lg  text-sm hover:bg-blue-900 active:bg-blue-600'
-                onClick={() => {
-                  dispatch({
-                    type: 'changedpage',
-                    page: login
-                  })
-                }}
+                onClick={() => changePage(login)}
               >
                 Login
               </button>
-            </Link>)
+               </Link>)
             : (<button
                 className='bg-red-700 py-1 px-3 sm:px-5 rounded-lg  text-sm hover:bg-red-900 active:bg-blue-600'
                 onClick={logout}
                >
               Logout
-               </button>)}
+            </button>)}
         </div>
       </div>
       <nav
@@ -106,9 +89,9 @@ const Header = () => {
               to={pag.url}
             >
               <li
-                className={`${pag.name === page.name ? 'border-l-8 border-yellow-400 opacity-100' : ''} mb-3 cursor-pointer hover:bg-blue-800 py-1 px-3`}
+                className={`${pag === page ? 'border-l-8 border-yellow-400 opacity-100' : ''} mb-3 cursor-pointer hover:bg-blue-800 py-1 px-3`}
                 // eslint-disable-next-line no-unused-expressions
-                onClick={() => { pag.title !== page ? dispatch({ type: 'changedpage', page: pag }) : null }}
+                onClick={() => { pag !== page ? changePage(pag) : null }}
               >
                 {pag.title}
               </li>

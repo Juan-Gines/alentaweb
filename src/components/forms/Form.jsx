@@ -1,20 +1,21 @@
 import { useContext, useEffect, useState } from 'react'
-import { UiContext } from '../../context/uiContext'
+import { Input } from './Input'
+import { UiContext, UiDispatchContext } from '../../context/uiContext'
+import { FormProvider, useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
+import { IconEmail, IconName, IconPassword } from './icons/iconsForm'
 import axios from 'axios'
 import { api } from '../../constants/api'
-import ErrorForms from '../forms/ErrorForms'
-import { FormProvider, useForm } from 'react-hook-form'
-import { Input } from '../forms/Input'
-import { IconEmail, IconName, IconPassword } from '../forms/icons/iconsForm'
+import ErrorForms from './errorForms'
 import { emailValidation, nameValidation, passwordValidation } from '../../utils/inputValidations'
-import AuthHeader from '../forms/headers/AuthHeader'
 
-const Register = () => {
-  const { ui: { page, sections }, changePage } = useContext(UiContext)
+export const Form = () => {
+  const { page, sections } = useContext(UiContext)
   const methods = useForm()
-  const { login: loginPage, register: registerPage } = sections.auth
+  const registerPage = sections.find((sec) => sec.title === 'Registro')
+  const login = sections.find((sec) => sec.title === 'Login')
   const [errorLogin, setErrorLogin] = useState(false)
+  const dispatch = useContext(UiDispatchContext)
   const navigate = useNavigate()
 
   const onSubmit = methods.handleSubmit(async (data) => {
@@ -24,7 +25,6 @@ const Register = () => {
       methods.reset()
       navigate('/login')
     } catch (error) {
-      console.log(error)
       if (error.response && error.response.data.status === 'FAILED') {
         const { data } = error.response.data
         setErrorLogin(data.error)
@@ -36,21 +36,30 @@ const Register = () => {
       }
     }
   })
+
   useEffect(() => {
-    if (page !== registerPage) changePage(registerPage)
+    if (page !== registerPage) {
+      dispatch({
+        type: 'changedpage',
+        page: registerPage
+      })
+    }
   }, [])
+
   return (
     <section className='min-h-screen grid place-items-center'>
-      <div className='w-full max-w-sm mx-auto overflow-hidden bg-slate-100 rounded-lg shadow-md dark:bg-gray-800'>
+      <div className='w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800'>
         <div className='px-6 py-4'>
-          <AuthHeader />
+          <div className='flex justify-center mx-auto'>
+            <img className='w-auto h-7 sm:h-8' src={page.icon} alt='' />
+          </div>
 
+          <h3 className='mt-3 text-xl font-medium text-center text-gray-600 dark:text-gray-200'>Alenta Dev</h3>
           <FormProvider {...methods}>
             <form
               onSubmit={e => e.preventDefault()}
               noValidate
-              autoComplete='off'
-              className='w-ful max-w-md mt-8'
+              className='w-ful max-w-md mt-4'
             >
               <Input
                 icon={<IconName />}
@@ -74,24 +83,26 @@ const Register = () => {
                 >
                   Registro
                 </button>
-
+                <div className='mt-6 text-center '>
+                  <Link
+                    to={login.url}
+                    onClick={() => {
+                      dispatch({
+                        type: 'changedpage',
+                        page: login
+                      })
+                    }}
+                  >
+                    <span className='text-sm font-semibold text-blue-500 hover:underline hover:text-blue-400 dark:text-blue-400'>
+                      ¿Ya tienes una cuenta?
+                    </span>
+                  </Link>
+                </div>
               </div>
             </form>
           </FormProvider>
-        </div>
-        <div className='py-5 mt-1 text-center bg-slate-300'>
-          <Link
-            to={loginPage.url}
-            onClick={() => changePage(loginPage)}
-          >
-            <span className='text-sm font-semibold text-blue-500 hover:underline hover:text-blue-400 dark:text-blue-400'>
-              ¿Ya tienes una cuenta?
-            </span>
-          </Link>
         </div>
       </div>
     </section>
   )
 }
-
-export default Register

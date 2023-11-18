@@ -8,6 +8,8 @@ const api = Object.freeze({
   login: auth + '/login',
   register: auth + '/register',
   changePassword: auth + '/password',
+  forgotPassword: auth + '/forgot-password',
+  resetPassword: auth + '/reset-password',
   users,
   getUser: users + '/profile',
   updateUser: users + '/personaldata',

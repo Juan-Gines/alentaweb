@@ -1,21 +1,19 @@
 import { useContext, useEffect, useState } from 'react'
 import { UiContext } from '../../context/uiContext'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { api } from '../../constants/api'
 import axios from 'axios'
-import { useAuth } from '../../context/authContext'
 import ErrorForms from '../forms/ErrorForms'
-import { IconEmail, IconPassword } from '../forms/icons/iconsForm'
+import { IconEmail } from '../forms/icons/iconsForm'
 import { Input } from '../forms/Input'
-import { emailValidation, passwordValidation } from '../../utils/inputValidations'
+import { emailValidation } from '../../utils/inputValidations'
 import { FormProvider, useForm } from 'react-hook-form'
 import AuthHeader from '../forms/headers/AuthHeader'
 
-const Login = () => {
+const ForgotPassword = () => {
   const { ui: { page, sections }, changePage } = useContext(UiContext)
   const methods = useForm()
-  const { login: loginPage, register: registerPage, forgotPassword: forgotPasswordPage } = sections.auth
-  const { login } = useAuth()
+  const forgotPasswordPage = sections.auth.forgotPassword
   const [errorLogin, setErrorLogin] = useState(false)
   const navigate = useNavigate()
 
@@ -23,10 +21,9 @@ const Login = () => {
     setErrorLogin(false)
 
     try {
-      const response = await axios.post(api.login, data)
+      const response = await axios.post(api.forgotPassword, data)
       if (response.data && response.data.status === 'OK') {
-        login(response.data.data)
-        navigate('/home')
+        navigate('/email-send')
       }
     } catch (error) {
       console.log(error)
@@ -43,7 +40,9 @@ const Login = () => {
     }
   })
   useEffect(() => {
-    if (page !== loginPage) changePage(loginPage)
+    if (page !== forgotPasswordPage) {
+      changePage(forgotPasswordPage)
+    }
   }, [])
 
   return (
@@ -51,55 +50,38 @@ const Login = () => {
       <div className='w-full max-w-sm mx-auto overflow-hidden bg-slate-100 rounded-lg shadow-md dark:bg-slate-800'>
         <div className='px-6 py-4'>
           <AuthHeader />
+          <div className='mt-3'>
+            <span className='text-base font-medium text-gray-600'>{page.description}</span>
+          </div>
           <FormProvider {...methods}>
             <form
               onSubmit={e => e.preventDefault()}
               noValidate
               autoComplete='off'
             >
-
               <Input
                 icon={<IconEmail />}
                 {...emailValidation}
               />
 
-              <Input
-                icon={<IconPassword />}
-                {...passwordValidation}
-              />
-
               {errorLogin && <ErrorForms error={errorLogin} />}
 
               <div className='flex items-center justify-between mt-4'>
-                <div href='#' className='text-sm text-gray-600 dark:text-gray-200 hover:text-slate-500'>
-                  <Link
-                    to={forgotPasswordPage.url}
-                    onClick={() => changePage(forgotPasswordPage)}
-                  >
-                    <span>¿Olvidaste la contraseña?</span>
-                  </Link>
-                </div>
                 <button
                   type='button'
-                  className='px-6 py-2 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50'
+                  className='w-full px-6 py-2 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50'
                   onClick={onSubmit}
                 >
-                  Login
+                  Enviar
                 </button>
               </div>
             </form>
           </FormProvider>
         </div>
 
-        <div className='flex items-center justify-center py-4 text-center bg-slate-300'>
-          <span className='text-sm text-gray-600 dark:text-gray-200'>¿No tienes cuenta? </span>
+        <div className='flex items-center px-6 py-4 bg-slate-300'>
+          <span className='text-base text-gray-600 dark:text-gray-200'>Revisa tu bandeja de spam</span>
 
-          <Link
-            to={registerPage.url}
-            onClick={() => changePage(registerPage)}
-          >
-            <span className='mx-2 text-sm font-semibold text-blue-500 dark:text-blue-400 hover:text-blue-400'>Regístrate</span>
-          </Link>
         </div>
       </div>
 
@@ -108,4 +90,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default ForgotPassword

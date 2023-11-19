@@ -5,7 +5,6 @@ import { UiContext } from '../../context/uiContext'
 const Porfolio = () => {
   const { ui: { page, sections }, changePage } = useContext(UiContext)
   const porfolioPage = sections.nav.porfolio
-  console.log(page !== porfolioPage)
   useEffect(() => {
     if (page !== porfolioPage) {
       changePage(porfolioPage)

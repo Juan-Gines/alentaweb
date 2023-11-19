@@ -5,7 +5,6 @@ import { UiContext } from '../../context/uiContext'
 const Contact = () => {
   const { ui: { page, sections }, changePage } = useContext(UiContext)
   const contactPage = sections.nav.contact
-  console.log(page !== contactPage)
   useEffect(() => {
     if (page !== contactPage) {
       changePage(contactPage)

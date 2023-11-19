@@ -29,7 +29,6 @@ const ResetPassword = ({ token }) => {
         navigate('/login')
       }
     } catch (error) {
-      console.log(error)
       if (error.response && error.response.data.status === 'FAILED') {
         const { data } = error.response.data
         setErrorLogin(data.error)

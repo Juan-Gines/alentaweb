@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:3001/api'
+const baseUrl = import.meta.env.VITE_API_URL
 const auth = baseUrl + '/auth'
 const users = baseUrl + '/users'
 const posts = baseUrl + '/posts'

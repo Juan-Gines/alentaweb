@@ -9,7 +9,6 @@ import GamesPage from './pages/GamesPage'
 import PorfolioPage from './pages/PorfolioPage'
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
-import PruebaForm from './pages/PruebaForm'
 import ResetPasswordPage from './pages/ResetPasswordPage'
 import ForgotPasswordPage from './pages/ForgotPasswordPage'
 import NotFoundPage from './pages/NotFoundPage'
@@ -28,7 +27,6 @@ function App () {
         <Route path='utilidades' element={<UtilsPage />} />
         <Route path='login' element={<LoginPage />} />
         <Route path='registro' element={<RegisterPage />} />
-        <Route path='pruebaform' element={<PruebaForm />} />
         <Route path='reset-password/:token' element={<ResetPasswordPage />} />
         <Route path='forgot-password' element={<ForgotPasswordPage />} />
         <Route path='email-send' element={<EmailSendPage />} />

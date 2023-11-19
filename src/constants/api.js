@@ -1,4 +1,4 @@
-const baseUrl = 'https://server-alenta-dev-kbtn.2.ie-1.fl0.io/api'
+const baseUrl = import.meta.env.VITE_API_URL
 const auth = baseUrl + '/auth'
 const users = baseUrl + '/users'
 const posts = baseUrl + '/posts'

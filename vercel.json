@@ -1,0 +1,7 @@
+{
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/reset-password/:token", "dest": "/reset-password" },
+    { "src": "/(.*)", "dest": "/" }
+  ]
+}

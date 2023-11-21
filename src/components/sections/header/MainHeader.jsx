@@ -1,11 +1,12 @@
 import { useContext } from 'react'
 import { UiContext } from '../../../context/uiContext'
+import background from '../../../assets/img/bgheader.png'
 
 const MainHeader = () => {
   const { ui: { page: { icon, title } } } = useContext(UiContext)
 
   return (
-    <header className='bg-cover flex justify-center' style='background-image: url(src/assets/img/bgheader.png)'>
+    <header className='bg-cover flex justify-center' style={{ backgroundImage: `url(${background})` }}>
       <div className='flex gap-2 md:gap-4 mt-10 items-center py-20'>
         <div className='w-8 sm:w-10 md:w-14'>
           <img

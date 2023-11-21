@@ -82,7 +82,7 @@ const Header = () => {
               )
             : (
               <div
-                className='flex justify-end items-center gap-2'
+                className='flex justify-end items-center gap-2 cursor-pointer'
                 onClick={toggleUserSlice}
               >
                 <div className='w-6 invert'>
@@ -97,7 +97,7 @@ const Header = () => {
         </div>
       </div>
       <nav
-        className={`absolute ${userslice === null ? 'hidden' : ''} ${userslice ? 'animate-growDown' : 'animate-growUp'} md:animate-growUp z-20 top-10 right-0 origin-top-center bg-gradient-to-br from-sky-400 to-sky-800 text-slate-200`}
+        className={`absolute ${userslice === null ? 'hidden' : ''} ${userslice ? 'animate-growDown' : 'animate-growUp'} z-20 top-10 right-0 origin-top-center bg-gradient-to-br from-sky-400 to-sky-800 text-slate-200`}
       >
         <ul className='mt-10 mb-5'>
           {userNavSections.map((pag, i) => (
@@ -126,7 +126,7 @@ const Header = () => {
         </ul>
       </nav>
       <nav
-        className={`absolute ${navslice === null ? 'hidden' : ''} ${navslice ? 'animate-growDown' : 'animate-growUp'} z-20 top-10 origin-top-center bg-gradient-to-br from-sky-400 to-sky-800 text-slate-200`}
+        className={`absolute ${navslice === null ? 'hidden' : ''} ${navslice ? 'animate-growDown' : 'animate-growUp'} md:animate-growUp z-20 top-10 origin-top-center bg-gradient-to-br from-sky-400 to-sky-800 text-slate-200`}
       >
         <ul className='mt-10 mb-5'>
           {navSections.map((pag, i) => (

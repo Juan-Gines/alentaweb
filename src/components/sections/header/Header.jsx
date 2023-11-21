@@ -126,7 +126,7 @@ const Header = () => {
         </ul>
       </nav>
       <nav
-        className={`absolute ${navslice === null ? 'hidden' : ''} ${navslice ? 'animate-growDown' : 'animate-growUp'} md:animate-growUp z-20 top-10 origin-top-center bg-gradient-to-br from-sky-400 to-sky-800 text-slate-200`}
+        className={`absolute ${navslice === null ? 'hidden' : ''} ${navslice ? 'animate-growDown' : 'animate-growUp'} z-20 top-10 origin-top-center bg-gradient-to-br from-sky-400 to-sky-800 text-slate-200`}
       >
         <ul className='mt-10 mb-5'>
           {navSections.map((pag, i) => (

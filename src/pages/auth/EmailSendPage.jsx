@@ -1,4 +1,4 @@
-import EmailSend from '../components/auth/EmailSend'
+import EmailSend from '../../components/auth/EmailSend'
 
 const EmailSendPage = () => {
   return (

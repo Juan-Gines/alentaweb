@@ -73,5 +73,13 @@ export const sectionList = Object.freeze({
       about,
       'Mi porfolio para que conozcas mis trabajos y proyectos en este apasionante mundo tecnológico.'
     )
+  },
+  userPanel: {
+    profile: new Section(
+      'Perfil',
+      '/usuario/perfil',
+      about,
+      'Perfil del usuario.'
+    )
   }
 })

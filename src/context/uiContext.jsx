@@ -4,6 +4,7 @@ import { sectionList } from '../constants/sections'
 const initialState = {
   page: sectionList.nav.home,
   navslice: null,
+  userslice: null,
   sections: sectionList
 }
 
@@ -26,11 +27,17 @@ export const UiProvider = ({ children }) => {
       type: 'togglenavslice'
     })
   }
+  function toggleUserSlice () {
+    dispatch({
+      type: 'toggleuserslice'
+    })
+  }
 
   const value = {
     ui,
     changePage,
-    toggleNavSlice
+    toggleNavSlice,
+    toggleUserSlice
   }
 
   return (
@@ -50,6 +57,7 @@ const uiReducer = (ui, action) => {
       return {
         page: payload.page,
         navslice: null,
+        userslice: null,
         sections: ui.sections
       }
     }
@@ -57,6 +65,15 @@ const uiReducer = (ui, action) => {
       return {
         page: ui.page,
         navslice: !ui.navslice,
+        userslice: ui.userslice,
+        sections: ui.sections
+      }
+    }
+    case 'toggleuserslice': {
+      return {
+        page: ui.page,
+        navslice: ui.navslice,
+        userslice: !ui.userslice,
         sections: ui.sections
       }
     }

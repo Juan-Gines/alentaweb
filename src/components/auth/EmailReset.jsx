@@ -2,13 +2,13 @@ import { useContext, useEffect } from 'react'
 import { UiContext } from '../../context/uiContext'
 import AuthHeader from '../forms/headers/AuthHeader'
 
-const EmailSend = () => {
+const EmailReset = () => {
   const { ui: { page, sections }, changePage } = useContext(UiContext)
-  const emailSendPage = sections.auth.emailSend
+  const emailResetPage = sections.auth.emailReset
 
   useEffect(() => {
-    if (page !== emailSendPage) {
-      changePage(emailSendPage)
+    if (page !== emailResetPage) {
+      changePage(emailResetPage)
     }
   }, [])
 
@@ -31,4 +31,4 @@ const EmailSend = () => {
   )
 }
 
-export default EmailSend
+export default EmailReset

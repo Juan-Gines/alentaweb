@@ -23,7 +23,7 @@ const ForgotPassword = () => {
     try {
       const response = await axios.post(api.forgotPassword, data)
       if (response.data && response.data.status === 'OK') {
-        navigate('/email-send')
+        navigate('/email-reset')
       }
     } catch (error) {
       if (error.response && error.response.data.status === 'FAILED') {

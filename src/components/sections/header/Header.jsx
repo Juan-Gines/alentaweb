@@ -1,4 +1,4 @@
-import { useContext, useRef } from 'react'
+import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { UiContext } from '../../../context/uiContext'
 import burger from '../../../assets/img/menu.png'
@@ -14,7 +14,6 @@ const Header = () => {
   const [...userNavList] = Object.keys(userPanel)
   const userNavSections = userNavList.map(s => userPanel[s])
   const { auth, logout } = useAuth()
-  const toggleUserRef = useRef(null)
 
   return (
     <header className='absolute w-full top-0 max-h-screen'>
@@ -84,7 +83,6 @@ const Header = () => {
               <div
                 className='flex justify-end items-center gap-2 cursor-pointer'
                 onClick={toggleUserSlice}
-                ref={toggleUserRef}
               >
                 <div className='w-6 invert'>
                   <img

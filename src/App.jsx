@@ -12,8 +12,9 @@ import RegisterPage from './pages/auth/RegisterPage'
 import ResetPasswordPage from './pages/auth/ResetPasswordPage'
 import ForgotPasswordPage from './pages/auth/ForgotPasswordPage'
 import NotFoundPage from './pages/errors/NotFoundPage'
-import EmailSendPage from './pages/auth/EmailSendPage'
+import EmailResetPage from './pages/auth/EmailResetPage'
 import ProfilePage from './pages/user/ProfilePage'
+import EmailActivationPage from './pages/auth/EmailActivationPage'
 function App () {
   return (
     <div className='App'>
@@ -30,7 +31,9 @@ function App () {
         <Route path='registro' element={<RegisterPage />} />
         <Route path='reset-password/:token' element={<ResetPasswordPage />} />
         <Route path='forgot-password' element={<ForgotPasswordPage />} />
-        <Route path='email-send' element={<EmailSendPage />} />
+        <Route path='email-reset' element={<EmailResetPage />} />
+        <Route path='email-activation' element={<EmailActivationPage />} />
+        <Route path='activar-cuenta' element={<EmailActivationPage />} />
         <Route path='usuario/perfil' element={<ProfilePage />} />
         <Route path='*' element={<NotFoundPage />} />
       </Routes>

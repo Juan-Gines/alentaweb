@@ -28,11 +28,23 @@ export const sectionList = Object.freeze({
       codigo,
       'Escribe una nueva contraseña.'
     ),
-    emailSend: new Section(
+    emailReset: new Section(
       'Email enviado',
-      '/email-send',
+      '/email-reset',
       codigo,
       'Se ha enviado un email para resetear su password.'
+    ),
+    emailActivation: new Section(
+      'Email enviado',
+      '/email-activation',
+      codigo,
+      'Se ha enviado un email para activar su cuenta.'
+    ),
+    acountActivated: new Section(
+      'Cuenta activada',
+      '/activar-cuenta',
+      codigo,
+      'Se ha enviado un email para activar su cuenta.'
     )
   },
   nav: {

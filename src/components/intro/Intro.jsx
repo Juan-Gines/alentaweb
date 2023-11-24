@@ -29,7 +29,7 @@ const Intro = () => {
           {page.title}
         </h1>
       </div>
-      <div className='absolute top-1/4 w-1/2  text-xl sm:text-lg font-sans font-family: text-blue-400 shadow-gray-900'>
+      <div className='absolute top-1/4 w-3/4 sm:w-1/2 text-lg sm:text-xl font-sans font-family: text-blue-400 shadow-gray-900'>
         <AnimateString
           str={msg}
           str2={msg2}

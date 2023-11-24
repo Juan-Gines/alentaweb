@@ -40,7 +40,7 @@ const Register = () => {
   }, [])
   return (
     <section className='min-h-screen grid place-items-center'>
-      <div className='w-full max-w-sm mx-auto overflow-hidden bg-slate-100 rounded-lg shadow-md dark:bg-gray-800'>
+      <div className='w-full max-w-sm mx-auto overflow-hidden bg-slate-100 rounded-lg shadow-md'>
         <div className='px-6 py-4'>
           <AuthHeader />
 
@@ -83,7 +83,7 @@ const Register = () => {
             to={loginPage.url}
             onClick={() => changePage(loginPage)}
           >
-            <span className='text-sm font-semibold text-blue-500 hover:underline hover:text-blue-400 dark:text-blue-400'>
+            <span className='text-sm font-semibold text-blue-500 hover:underline hover:text-blue-400'>
               ¿Ya tienes una cuenta?
             </span>
           </Link>

@@ -21,7 +21,7 @@ export const Input = ({
   const inputError = findInputError(errors, id)
   const isInvalid = isFormInvalid(inputError)
 
-  const inputClasses = `block w-full px-10 py-3 text-gray-700 placeholder-gray-400 bg-white border rounded-lg dark:bg-slate-800 dark:border-slate-600 dark:placeholder-gray-400 focus:outline-none ${isInvalid ? 'ring-red-300 ring ring-opacity-40 border-red-400 focus:border-red-400' : 'focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40  focus:ring focus:ring-blue-300'}`
+  const inputClasses = `block w-full px-10 py-3 text-gray-700 placeholder-gray-400 bg-white border rounded-lg focus:outline-none ${isInvalid ? 'ring-red-300 ring ring-opacity-40 border-red-400 focus:border-red-400' : 'focus:border-blue-400 focus:ring-opacity-40  focus:ring focus:ring-blue-300'}`
 
   return (
     <>

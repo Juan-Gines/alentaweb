@@ -47,7 +47,7 @@ const Login = () => {
 
   return (
     <section className='min-h-screen grid place-items-center'>
-      <div className='w-full max-w-sm mx-auto overflow-hidden bg-slate-100 rounded-lg shadow-md dark:bg-slate-800'>
+      <div className='w-full max-w-sm mx-auto overflow-hidden bg-slate-100 rounded-lg shadow-md'>
         <div className='px-6 py-4'>
           <AuthHeader />
           <FormProvider {...methods}>
@@ -70,14 +70,12 @@ const Login = () => {
               {errorLogin && <ErrorForms error={errorLogin} />}
 
               <div className='flex items-center justify-between mt-4'>
-                <div href='#' className='text-sm text-gray-600 dark:text-gray-200 hover:text-slate-500'>
-                  <Link
-                    to={forgotPasswordPage.url}
-                    onClick={() => changePage(forgotPasswordPage)}
-                  >
-                    <span>¿Olvidaste la contraseña?</span>
-                  </Link>
-                </div>
+                <Link
+                  to={forgotPasswordPage.url}
+                  onClick={() => changePage(forgotPasswordPage)}
+                >
+                  <span className='mx-2 text-sm font-semibold text-blue-500 hover:text-blue-400'>¿Olvidaste la contraseña?</span>
+                </Link>
                 <button
                   type='button'
                   className='px-6 py-2 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50'
@@ -91,13 +89,13 @@ const Login = () => {
         </div>
 
         <div className='flex items-center justify-center py-4 text-center bg-slate-300'>
-          <span className='text-sm text-gray-600 dark:text-gray-200'>¿No tienes cuenta? </span>
+          <span className='text-sm text-gray-600'>¿No tienes cuenta? </span>
 
           <Link
             to={registerPage.url}
             onClick={() => changePage(registerPage)}
           >
-            <span className='mx-2 text-sm font-semibold text-blue-500 dark:text-blue-400 hover:text-blue-400'>Regístrate</span>
+            <span className='mx-2 text-sm font-semibold text-blue-500 hover:text-blue-400'>Regístrate</span>
           </Link>
         </div>
       </div>

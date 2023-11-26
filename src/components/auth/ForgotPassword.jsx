@@ -27,8 +27,9 @@ const ForgotPassword = () => {
       }
     } catch (error) {
       if (error.response && error.response.data.status === 'FAILED') {
-        const { data } = error.response.data
-        setErrorLogin(data.error)
+        const { status, data } = error.response
+        const message = (status === 500) ? 'Error enviando el mensaje' : data.data.error
+        setErrorLogin(message)
       } else if (error.response) {
         console.error('Error en la solicitud:', error)
         setErrorLogin(error.response.data.error)

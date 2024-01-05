@@ -1,15 +1,14 @@
-# Proyecto Web Alenta Solutions
+# Proyecto Web Alenta Solutions Frontend
 
   Este proyecto tendrá como inicio un blog, un portfolio, juegos y utilidades.
 
-## Tecnologías previstas
+## Tecnologías
 
-  - Frontend con react y tailwind.
-  - Backend con nodeJS o Laravel (No lo tengo claro).
-  - BBDD MariaDB o FireStore depende de donde lo cuelgue.
+  - React.
+  - Tailwind.
+  - React hook forms.
 
 ## Servidor
 
-  - Probablemente lo cuelgue en Firebase (80%) Nodejs.
-  - O otro servidor con PHP.
+  - Desplegado en vercel.
 
